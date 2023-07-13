@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Final2.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Final2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Final2Context") ?? throw new InvalidOperationException("Connection string 'Final2Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
