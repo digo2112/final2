@@ -1,6 +1,7 @@
 ﻿using Final2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Final2.Models.ViewModels;
 
 namespace Final2.Controllers
 {
@@ -26,7 +27,7 @@ namespace Final2.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new Final2.Models.ViewModels.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

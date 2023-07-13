@@ -1,4 +1,4 @@
-namespace Final2.Models
+namespace Final2.Models.ViewModels
 {
     public class ErrorViewModel
     {
