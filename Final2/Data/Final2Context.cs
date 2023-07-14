@@ -13,6 +13,10 @@ namespace Final2.Data
             : base(options)
         {
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
+        {
+            dbContextOptionsBuilder.UseSqlServer(@"server=localhost;userid=batata;password=brocolis;database=bancoteste2;port=3306");
+        }
 
         public DbSet<Final2.Models.Department> Department { get; set; } = default!;
     }

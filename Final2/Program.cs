@@ -1,10 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Final2.Data;
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<Final2Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Final2Context") ?? throw new InvalidOperationException("Connection string 'Final2Context' not found.")));
+using MongoDB.Driver.Core.Configuration;
+using System.Configuration;
 
+var builder = WebApplication.CreateBuilder(args);
+
+
+
+/*builder.Services.AddDbContext<Final2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Final2Context") ?? throw new InvalidOperationException("Connection string 'Final2Context' not found.")));*/
+
+
+
+//var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
+//var connectionString = new MySqlServerVersion(new Version(8, 0, 32));
+var connectionString = builder.Configuration.GetConnectionString("Final2Context");
+
+//Version connectionString = new MySqlServerVersion(new Version(8, 0, 32));//new Version(8, 0, 32);
+//NAO CONSEGUI USAR O AUTODETECT
+
+//string? connectionString = builder.Configuration.GetConnectionString("Final2");
+
+builder.Services.AddDbContext<Final2Context>(); 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
