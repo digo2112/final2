@@ -9,7 +9,7 @@ namespace Final2.Data
 {
     public class Final2Context : DbContext
     {
-        public Final2Context (DbContextOptions<Final2Context> options)
+        public Final2Context(DbContextOptions<Final2Context> options)
             : base(options)
         {
         }
@@ -20,6 +20,9 @@ namespace Final2.Data
             dbContextOptionsBuilder.UseSqlServer(@"server=localhost;userid=batata;password=brocolis;database=bancoteste2;port=3306");
         }
         */
-        public DbSet<Final2.Models.Department> Department { get; set; } = default!;
+        // public DbSet<Final2.Models.Department> Department { get; set; } = default!;
+        public DbSet<Department> Department { get; set; } = default!; //tirou o final2.models pq ja eh o proprio
+        public DbSet<Seller> Seller { get; set; } = default!;
+        public DbSet<SalesRecord> SalesRecord { get; set; } = default!;
     }
 }
