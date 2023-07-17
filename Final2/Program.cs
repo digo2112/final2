@@ -7,22 +7,15 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 
+//esse peguei do tutorial da ms
+builder.Services.AddDbContext<Final2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Final2Context")));
 
-/*builder.Services.AddDbContext<Final2Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Final2Context") ?? throw new InvalidOperationException("Connection string 'Final2Context' not found.")));*/
+//essas duas loinhas debaixo adrian fez pra conectar no mysql
+/*var connectionString = builder.Configuration.GetConnectionString("Final2Context");
+builder.Services.AddDbContext<Final2Context>(); */
 
 
-
-//var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
-//var connectionString = new MySqlServerVersion(new Version(8, 0, 32));
-var connectionString = builder.Configuration.GetConnectionString("Final2Context");
-
-//Version connectionString = new MySqlServerVersion(new Version(8, 0, 32));//new Version(8, 0, 32);
-//NAO CONSEGUI USAR O AUTODETECT
-
-//string? connectionString = builder.Configuration.GetConnectionString("Final2");
-
-builder.Services.AddDbContext<Final2Context>(); 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
